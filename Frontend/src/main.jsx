@@ -9,7 +9,7 @@ import { Toaster } from "react-hot-toast";
 import axios from "axios";
 
 // Configure axios defaults
-axios.defaults.baseURL = "http://localhost:5005/api/v1";
+axios.defaults.baseURL = import.meta.env.VITE_APP_BACKEND_URL;;
 axios.defaults.withCredentials = true;
 axios.defaults.headers.common['Content-Type'] = 'application/json';
 

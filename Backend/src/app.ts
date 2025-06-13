@@ -7,8 +7,21 @@ import cors from "cors";
 config();
 const app = express();
 
+// Set up CORS with dynamic origin from environment variable
+const allowedOrigins = [process.env.FRONTEND_URL];
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+};
+
 //middlewares
-app.use(cors({ origin: "http://localhost:5173", credentials: true }));
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser(process.env.COOKIE_SECRET));
 

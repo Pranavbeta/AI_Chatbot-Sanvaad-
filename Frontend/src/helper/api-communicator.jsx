@@ -1,6 +1,7 @@
 import axios from "axios";
 
 
+
 // Function to log in a user
 export const loginUser = async (email, password) => {
   try {
