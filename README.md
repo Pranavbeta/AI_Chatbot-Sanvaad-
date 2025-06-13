@@ -146,9 +146,10 @@ This will spin up **Frontend + Backend** in Docker containers.
   - **Source Path**: `/*`  
   - **Destination Path**: `/index.html`  
   - **Action**: `Rewrite`  
-  - **Status Code**: `200`  
+  - **Status Code**: `200`
 
----
+Project runs on render : https://sanvaad-frontend.onrender.com
+
 
 ## 🤝 Contributing  
 
@@ -159,6 +160,4 @@ Pull requests are welcome! For major changes, please open an issue first.
 ## 📜 License  
 
 This project is licensed under the **MIT License** – see `LICENSE.md` for details.  
-
-- 
-
+ 
