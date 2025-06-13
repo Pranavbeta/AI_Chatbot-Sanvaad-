@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ./Frontend
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173" # Map host port 5173 to container port 5173 (Vite default)
+    volumes:
+      - ./Frontend:/app # Mount the frontend directory for development
+      - /app/node_modules # Keep node_modules inside the container
+    environment:
+      - NODE_ENV=development
+    restart: always
+    # Optionally, you can add a command here if your Dockerfile CMD is not sufficient
+    # command: npm run dev
+
+  backend:
+    build:
+      context: ./Backend
+      dockerfile: Dockerfile
+    ports:
+      - "5005:5005" # Map host port 5005 to container port 5005
+    volumes:
+      - ./Backend:/app # Mount the backend directory for development
+      - /app/node_modules # Keep node_modules inside the container
+    environment:
+      - NODE_ENV=development
+      # Add your backend environment variables here, e.g.:
+      # - OPEN_AI_SECRET=${OPEN_AI_SECRET}
+      # - GOOGLE_GEMINI_API_KEY=${GOOGLE_GEMINI_API_KEY}
+    restart: always
+
+networks:
+  default:
+    driver: bridge 
